@@ -11,11 +11,14 @@ function HomeScreen({ navigation }) {
       style={{
         flex: 1,
         //justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-end",
       }}
     >
+      <FontAwesome name="bullhorn" size={24} color="grey" />
+
       <Button
-        title="Help"
+        title=""
+        color="lightgrey"
         onPress={() => navigation.navigate("Contact the Police")}
       />
     </View>
