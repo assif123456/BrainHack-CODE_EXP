@@ -156,8 +156,8 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderStyle: "solid",
     borderRadius: 50,
-    // borderColor: "#bf00ff",
-    borderColor: "lightgrey",
+    borderColor: "#bf00ff",
+    // borderColor: "lightgrey",
   },
 
   buttonText: {
