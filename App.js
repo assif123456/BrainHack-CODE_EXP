@@ -22,7 +22,7 @@ function SettingsScreen() {
 function ChatScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
+      <Text>Chat!</Text>
     </View>
   );
 }
