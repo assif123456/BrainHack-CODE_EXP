@@ -14,14 +14,14 @@ export default function HomeScreen() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   header: {
     fontSize: 30,
     fontWeight: "bold",
     fontFamily: "Arial",
     alignItems: "flex-start",
-    alignContent: "flex-start",
+    justifyContent: "flex-start",
   },
 });
