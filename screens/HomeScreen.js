@@ -1,32 +1,27 @@
 import * as React from "react";
-import  { useState } from "react" ;
-import { Text, View, StyleSheet , Button , Image , TextInput } from "react-native";
+import  { useState ,useEffect } from "react" ;
+import { Text, View, StyleSheet , Button , Image , TextInput , ScrollView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Linking } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
-// import * as SQLite from 'expo-sqlite';
 
-// const db = SQLite.openDatabase("notes.db");
-// const SAMPLE_NOTES = [
-//   { title: "Walk the cat", id: "0", done: false },
-//   { title: "Water the cat", id: "1", done: false },
-//   { title: "Buy the milk", id: "2", done: false },
-//   { title: "Water the milk", id: "3", done: false },
-// ];
  export default function HomeScreen() {
   return (
-    <Stack.Navigator  mode="modal" headerMode="none">
+    
+    <Stack.Navigator  >
       <Stack.Screen name="Home" component={HomeScreen0} />
       <Stack.Screen name="Archive" component={HomeSecondScreen} />
     </Stack.Navigator>
+
+ 
   );
 }
 
 function HomeScreen0({ navigation }) {
   const [text, setText] = useState('');
   return (
-
+    <ScrollView style={style.scrollView} >
      <View style={style.container}>
         {/* <Text style={style.header}>Home</Text> */}
         <Text style ={style.secondline}>Good Morning (name)!</Text>
@@ -66,108 +61,18 @@ function HomeScreen0({ navigation }) {
   
       <Image style= {style.image} source = {{uri: "https://scontent.fsin10-1.fna.fbcdn.net/v/t1.6435-9/91179740_195383668581726_5477380571501953024_n.png?_nc_cat=111&ccb=1-3&_nc_sid=973b4a&_nc_ohc=fSQo6AGCeqEAX9yZkIt&_nc_ht=scontent.fsin10-1.fna&oh=88064fba12c4d9875833805778ec34e0&oe=60CCB5EA"}}/> 
       </View>
+      </ScrollView>
     );
 }
 
 function HomeSecondScreen() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Archive"
-        component={NotesScreen}
-        options={{
-          headerTitle: "Notes App",
-          headerTitleStyle: style.headerTitleStyle,
-          headerStyle: style.headerStyle,
-        }}
-      />
-    </Stack.Navigator>
+    <Text></Text>
   );
 }
 
 const Stack = createStackNavigator();
 
-function NotesScreen({ route, navigation }) {
-  const [notes, setNotes] = useState(SAMPLE_NOTES);
-
-  function refreshNotes() {
-    db.transaction((tx) => {
-      tx.executeSql(
-        "SELECT * FROM notes",
-        null,
-        (txObj, { rows: { _array } }) => setNotes(_array),
-        (txObj, error) => console.log("Error ", error)
-      );
-    });
-  }
-
-  // Create the DB on first run
-  useEffect(() => {
-    db.transaction(
-      (tx) => {
-        tx.executeSql(`
-        CREATE TABLE IF NOT EXISTS notes
-        (id INTEGER PRIMARY KEY AUTOINCREMENT,
-          title TEXT,
-          done INT);
-      `);
-      },
-      null,
-      refreshNotes
-    );
-  }, []);
-
-  // Adds the + button in the top right
-  useEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity onPress={() => navigation.navigate("Add")}>
-          <Entypo
-            style={{ marginRight: 10 }}
-            name="new-message"
-            size={24}
-            color="black"
-          />
-        </TouchableOpacity>
-      ),
-    });
-  });
-
-  // Responds to coming back from the add screen
-  useEffect(() => {
-    if (route.params?.todoText) {
-      // const newNote = {
-      //   title: route.params.todoText,
-      //   id: notes.length.toString(),
-      //   done: false,
-      // };
-      // setNotes([...notes, newNote]);
-      db.transaction(
-        (tx) => {
-          tx.executeSql("INSERT INTO notes (done, title) VALUES (0, ?)", [
-            route.params.todoText,
-          ]);
-        },
-        null,
-        refreshNotes
-      );
-    }
-  }, [route.params?.todoText]);
-
-  function renderItem({ item }) {
-    return (
-      <View style={styles.listItem}>
-        <Text>{item.title}</Text>
-      </View>
-    );
-  }
-
-  return (
-    <View style={styles.container}>
-      <FlatList style={styles.list} data={notes} renderItem={renderItem} />
-    </View>
-  );
-}
 
 const style = StyleSheet.create({
   container: {
@@ -206,7 +111,7 @@ const style = StyleSheet.create({
   },
 
   text:{
-    marginLeft:20,
+    marginLeft:25,
     padding:10,
     fontSize:20,
   },
@@ -228,6 +133,8 @@ const style = StyleSheet.create({
     backgroundColor: "white",
     marginTop: 10,
     width: "90%",
-  }
-
+  },
+  scrollView: {
+    marginHorizontal: 10,
+  },
 });
