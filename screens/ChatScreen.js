@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {createStackNavigator} from "@react-navigation/stack";
 
-export default function ChatScreen() {
+
+ function ChatScreen() {
   return (
     <View style={style.container}>
       <Text>Chat!</Text>
@@ -17,4 +17,14 @@ const style = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  
 });
+
+const Stack  = createStackNavigator()
+
+export default function ChatStack() {
+    return(
+    <Stack.Navigator>
+        <Stack.Screen name = "Chat" component={ChatScreen}/>
+    </Stack.Navigator>)
+}
