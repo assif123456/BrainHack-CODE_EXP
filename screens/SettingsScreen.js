@@ -94,8 +94,8 @@ function SettingsStackScreen() {
         component={SettingsScreen}
         options={{
           headerTitle: "Settings",
-          headerTitleStyle: styles.headerTitleStyle,
-          headerStyle: styles.headerStyle,
+          // headerTitleStyle: styles.headerTitleStyle,
+          // headerStyle: styles.headerStyle,
         }}
       />
     </SettingsStack.Navigator>
@@ -151,8 +151,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "white",
     height: 70,
-    margin: 10,
+    margin: 8,
     borderRadius: 50,
+    borderWidth: 3,
+    borderStyle: "solid",
+    borderRadius: 50,
+    // borderColor: "#bf00ff",
+    borderColor: "lightgrey",
   },
 
   buttonText: {
