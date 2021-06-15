@@ -92,7 +92,6 @@ function SettingsStackScreen() {
 const Stack = createStackNavigator();
 export default function App() {
   return (
-    <NavigationContainer>
       <Stack.Navigator mode="modal" headerMode="none">
         <Stack.Screen
           name="SettingsStack"
@@ -102,7 +101,6 @@ export default function App() {
         <Stack.Screen name="EmergencyContacts" component={EmergencyContactsScreen} />
         <Stack.Screen name="Preferences" component={PreferencesScreen} />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 }
 const styles = StyleSheet.create({
