@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 export default function HomeScreen() {
   return (
     <View style={style.container}>
-      <Text>Home!</Text>
+      <Text style={style.header}>Home</Text>
     </View>
   );
 }
@@ -16,5 +16,12 @@ const style = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  header: {
+    fontSize: 30,
+    fontWeight: "bold",
+    fontFamily: "Arial",
+    alignItems: "flex-start",
+    alignContent: "flex-start",
   },
 });
