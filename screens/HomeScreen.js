@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, StyleSheet , Button } from "react-native";
+import { Text, View, StyleSheet , Button , Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Linking } from 'react-native';
@@ -48,6 +48,7 @@ export default function HomeScreen() {
       }}
       />
       <Text style = {style.text}>Quote of the Day!</Text>
+      <Image style= {style.image} source = {{uri: "https://scontent.fsin10-1.fna.fbcdn.net/v/t1.6435-9/91179740_195383668581726_5477380571501953024_n.png?_nc_cat=111&ccb=1-3&_nc_sid=973b4a&_nc_ohc=fSQo6AGCeqEAX9yZkIt&_nc_ht=scontent.fsin10-1.fna&oh=88064fba12c4d9875833805778ec34e0&oe=60CCB5EA"}}/>
     </View>
   );
 }
@@ -91,7 +92,17 @@ const style = StyleSheet.create({
     marginLeft:20,
     padding:10,
     fontSize:20,
-  }
+  },
 
+  image:{
+    width:300,
+    height:300,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft:30,
+    marginTop:10,
+    marginBottom:10,
+  }
 
 });
