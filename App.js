@@ -7,6 +7,8 @@ import HomeScreen from "./screens/HomeScreen";
 import ChatScreen from "./screens/ChatScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
