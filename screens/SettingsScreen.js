@@ -13,27 +13,41 @@ import {
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Entypo } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 function SettingsScreen({ navigation }) {
   return(
     <View>
-      <Image source={{uri:"https://image.flaticon.com/icons/png/512/1946/1946392.png"}} style={styles.profileicon}/>
-
-      <Text style={{color: 'blue', padding: 10, marginLeft: 180, textDecorationLine: 'underline'}}
+      <View style={styles.ImageContainer}>
+        <Image source={{uri:"https://image.flaticon.com/icons/png/512/1946/1946392.png"}} style={styles.profileicon}/>
+        <Text style={styles.username}>@username</Text>
+        <Text style={{color: 'blue', textDecorationLine: 'underline'}}
         onPress={() => Linking.openURL('http://google.com')}>Edit 
-      </Text>
+        </Text>
+      </View>
 
       <TouchableOpacity style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>Profile</Text>
+        <Text style={styles.buttonText}>Profile{'                                                          '}
+          <TouchableOpacity style={styles.IconButtonContainer}>
+            <Feather name="edit-3" size={20} color="grey" />
+          </TouchableOpacity>
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("EmergencyContacts")}>
-        <Text style={styles.buttonText}>Emergency Contacts</Text>
+        <Text style={styles.buttonText}>Emergency Contacts{'                                '}
+          <TouchableOpacity style={styles.IconButtonContainer}>
+            <Feather name="edit-3" size={20} color="grey" />
+          </TouchableOpacity>
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("Preferences")}>
-        <Text style={styles.buttonText}>Preferences</Text>
+        <Text style={styles.buttonText}>Preferences{'                                               '}
+          <TouchableOpacity style={styles.IconButtonContainer}>
+            <Feather name="edit-3" size={20} color="grey" />
+          </TouchableOpacity>
+        </Text>
       </TouchableOpacity>
 
 
@@ -103,6 +117,8 @@ export default function App() {
       </Stack.Navigator>
   );
 }
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -131,13 +147,11 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     alignItems: "flex-start",
+    alignContent: "center",
     justifyContent: "center",
     backgroundColor: "white",
     height: 70,
-    marginRight: 10, 
-    marginLeft: 10,
-    marginTop: 8, 
-    marginBottom: 10,
+    margin: 10,
     borderRadius: 50,
   },
 
@@ -150,7 +164,25 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     marginTop: 30,
-    marginLeft: 130,
-    alignContent: "center",
-      }
+  }, 
+
+  ImageContainer: {
+    alignItems: "center", 
+    backgroundColor: 'transparent', 
+    margin: 10,
+  }, 
+
+  username: {
+    padding: 10, 
+    fontSize: 25,
+    fontWeight: "bold", 
+    fontStyle: "italic",
+  }, 
+
+  IconButtonContainer: {
+    alignContent: "flex-end", 
+    justifyContent: "center", 
+    alignItems: "flex-end",
+    backgroundColor: "transparent"
+  }
 });
