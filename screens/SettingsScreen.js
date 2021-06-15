@@ -15,35 +15,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Entypo } from "@expo/vector-icons";
 
-const SAMPLE_NOTES = [
-  { title: "Walk the cat", id: "0", done: false },
-  { title: "Water the cat", id: "1", done: false },
-  { title: "Buy the milk", id: "2", done: false },
-  { title: "Water the milk", id: "3", done: false },
-];
-
 function SettingsScreen({ navigation }) {
-  const [notes, setNotes] = useState(SAMPLE_NOTES);
-  useEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity onPress={() => navigation.navigate("Preferences")}>
-          <Entypo
-            style={{ marginRight: 10 }}
-            name="new-message"
-            size={24}
-            color="black"
-          />
-        </TouchableOpacity>
-      ),
-    });
-  });
-
   return(
     <View>
       <Image source={{uri:"https://image.flaticon.com/icons/png/512/1946/1946392.png"}} style={styles.profileicon}/>
 
-      <Text style={{color: 'blue', padding: 20, textDecorationLine: 'underline', alignItems: "center", justifyContent: "flex-end",}}
+      <Text style={{color: 'blue', padding: 10, marginLeft: 180, textDecorationLine: 'underline'}}
         onPress={() => Linking.openURL('http://google.com')}>Edit 
       </Text>
 
@@ -51,11 +28,11 @@ function SettingsScreen({ navigation }) {
         <Text style={styles.buttonText}>Profile</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.buttonContainer}>
+      <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("EmergencyContacts")}>
         <Text style={styles.buttonText}>Emergency Contacts</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.buttonContainer}>
+      <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("Preferences")}>
         <Text style={styles.buttonText}>Preferences</Text>
       </TouchableOpacity>
 
@@ -80,6 +57,16 @@ function PreferencesScreen({ navigation }) {
       <Text>{todoText}</Text>
     </View>
   );
+}
+
+function EmergencyContactsScreen({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text>your list of emergency contacts</Text>
+
+      <Button onPress={() => navigation.goBack()} title="Back" />
+    </View>
+  )
 }
 
 const SettingsStack = createStackNavigator();
@@ -112,6 +99,7 @@ export default function App() {
           component={SettingsStackScreen}
           options={{ headerShown: true }}
         />
+        <Stack.Screen name="EmergencyContacts" component={EmergencyContactsScreen} />
         <Stack.Screen name="Preferences" component={PreferencesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -120,16 +108,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
-    // justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "lightgrey",
   },
   headerTitleStyle: {
     fontWeight: "bold",
     fontSize: 30,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
   headerStyle: {
-    height: 80,
+    height: 100,
     backgroundColor: "white",
   },
 
@@ -144,8 +134,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: "flex-start",
     justifyContent: "center",
-    backgroundColor: "lightgrey",
-    height: 80,
+    backgroundColor: "white",
+    height: 70,
     marginRight: 10, 
     marginLeft: 10,
     marginTop: 8, 
@@ -154,7 +144,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    marginLeft: 15,
+    marginLeft: 20,
     fontSize: 18, 
   },
 
@@ -162,7 +152,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     marginTop: 30,
-    marginLeft: 90,
+    marginLeft: 130,
     alignContent: "center",
       }
 });
