@@ -93,7 +93,7 @@ export default function ChatStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Chat" component={ChatScreen} />
-      <Stack.Screen name="Bot" component={App.render} />
+      <Stack.Screen name="Bot" component={App} />
     </Stack.Navigator>
   );
 }
