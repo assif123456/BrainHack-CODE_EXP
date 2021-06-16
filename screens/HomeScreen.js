@@ -53,11 +53,14 @@ function HomeScreen0({ navigation }) {
           marginLeft: 25, 
           backgroundColor: "lightblue", 
           borderRadius: 20, 
-          padding: 2,
-          width: 60,
+          padding: 6,
+          width: 70,
+          borderWidth: 3,
+          borderStyle: "solid",
+          borderColor: "grey",
           }}>
         <TouchableOpacity onPress={() => navigation.navigate("Archive")}>
-          <Text styles={{color:"purple", fontWeight: "bold"}}>Submit</Text>
+          <Text styles={{fontWeight: "bold", fontSize: 10}}>Submit</Text>
         </TouchableOpacity>
        </View>
         
