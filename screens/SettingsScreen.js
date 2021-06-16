@@ -20,7 +20,7 @@ function SettingsScreen({ navigation }) {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity style={{color: "lightgrey", alignItems: "flex-end", marginRight: 18}} onPress={() => navigation.navigate("Contact the Police")}>
+        <TouchableOpacity style={{color: "lightgrey", alignItems: "flex-end", marginRight: 18}} onPress={() => navigation.navigate("Alert Someone")}>
           <FontAwesome name="bullhorn" size={18} color="grey" />
         </TouchableOpacity>
       ),
