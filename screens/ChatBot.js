@@ -1,7 +1,7 @@
 // credits: https://medium.com/@itsHabib/integrate-an-amazon-lex-chatbot-into-a-react-native-app-1536883ccbed
 
 import React, { Component } from "react";
-import { Text, View, StyleSheet, TextInput, FlatList } from "react-native";
+import { Text, View, StyleSheet, TextInput, FlatList, KeyboardAvoidingView } from "react-native";
 import AWS from "aws-sdk/dist/aws-sdk-react-native";
 // Initialize the Amazon Cognito credentials provider
 AWS.config.region = "us-east-1"; // Region
@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: "row",
-    backgroundColor: "#EEEFFA",
+    backgroundColor: "#EBEBEB",
+    height: 50,
   },
 });
 export default class App extends Component {
@@ -138,7 +139,7 @@ export default class App extends Component {
             extraData={this.state.messages}
           />
         </View>
-        <View style={styles.inputContainer}>
+        <KeyboardAvoidingView style={styles.inputContainer} behavior ={'height'}>
           <TextInput
             onChangeText={(text) => this.setState({ userInput: text })}
             value={this.state.userInput}
@@ -148,7 +149,7 @@ export default class App extends Component {
             autoFocus={true}
             onSubmitEditing={this.handleTextSubmit.bind(this)}
           />
-        </View>
+        </KeyboardAvoidingView>
       </View>
     );
   }

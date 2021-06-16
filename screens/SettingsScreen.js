@@ -39,7 +39,7 @@ function SettingsScreen({ navigation }) {
       <TouchableOpacity style={styles.buttonContainer}>
         <Text style={styles.buttonText}>Profile
           <View style={styles.IconButtonContainer}>
-            <Feather name="edit-3" size={20} color="grey" />
+            {/* <Feather name="edit-3" size={20} color="grey" /> */}
           </View>
         </Text>
       </TouchableOpacity>
@@ -47,7 +47,7 @@ function SettingsScreen({ navigation }) {
       <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("EmergencyContacts")}>
         <Text style={styles.buttonText}>Emergency Contacts
           <View style={styles.IconButtonContainer}>
-            <Feather name="edit-3" size={20} color="grey" />
+            {/* <Feather name="edit-3" size={20} color="grey" /> */}
           </View>
         </Text>
       </TouchableOpacity>
@@ -55,7 +55,7 @@ function SettingsScreen({ navigation }) {
       <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("Preferences")}>
         <Text style={styles.buttonText}>Preferences
           <View style={styles.IconButtonContainer}>
-            <Feather name="edit-3" size={20} color="grey" />
+            {/* <Feather name="edit-3" size={20} color="grey" /> */}
           </View>
         </Text>
       </TouchableOpacity>
