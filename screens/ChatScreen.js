@@ -10,11 +10,8 @@ function ChatScreen({ navigation }) {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity
-          style={{ color: "lightgrey", alignItems: "flex-end", padding: 20 }}
-          onPress={() => navigation.navigate("Contact the Police")}
-        >
-          <FontAwesome name="bullhorn" size={24} color="grey" />
+        <TouchableOpacity style={{color: "lightgrey", alignItems: "flex-end", marginRight: 18}} onPress={() => navigation.navigate("Contact the Police")}>
+          <FontAwesome name="bullhorn" size={18} color="grey" />
         </TouchableOpacity>
       ),
     });
