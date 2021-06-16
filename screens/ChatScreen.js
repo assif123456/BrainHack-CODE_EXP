@@ -45,10 +45,13 @@ function ChatScreen({ navigation }) {
         />
         <Text style={style.buttonText}>Post annoymously on a forum</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={style.button}>
+      <TouchableOpacity
+        style={style.button}
+        onPress={() => navigation.navigate("Bot")}
+      >
         <Image
           style={style.butonImage}
-          source={{ uri: "https://image.flaticon.com/icons/png/512/2602/2602681.png" }}
+          source={{ uri: "https://i.imgur.com/siVcRDk.png" }}
         />
         <Text style={style.buttonText}>Chat with bot</Text>
       </TouchableOpacity>
@@ -105,6 +108,7 @@ export default function ChatStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Chat" component={ChatScreen} />
+      <Stack.Screen name="Bot" component={App} />
     </Stack.Navigator>
   );
 }
