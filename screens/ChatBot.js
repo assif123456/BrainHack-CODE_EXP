@@ -1,29 +1,3 @@
-// credits: https://medium.com/@itsHabib/integrate-an-amazon-lex-chatbot-into-a-react-native-app-1536883ccbed
-
-// Helper function used to create the proper response back to Lex
-function close(message) {
-  return {
-    dialogAction: {
-      type: "Close",
-      fulfillmentState: "Fulfilled",
-      message,
-    },
-  };
-}
-exports.handler = (event, context, callback) => {
-  console.log(event.currentIntent);
-  console.log(context);
-  let { Name: name } = event.currentIntent.slots;
-  let { Num: number } = event.currentIntent.slots;
-  callback(
-    null,
-    close({
-      contentType: "PlainText",
-      content: `Your username is ${name}${number}`,
-    })
-  );
-};
-
 import React, { Component } from "react";
 import { Text, View, StyleSheet, TextInput, FlatList } from "react-native";
 import AWS from "aws-sdk/dist/aws-sdk-react-native";
@@ -114,7 +88,7 @@ export default class App extends Component {
   sendToLex(message) {
     let params = {
       botAlias: "$LATEST",
-      botName: "Your-Bot-Name",
+      botName: "BH",
       inputText: message,
       userId: lexUserId,
     };
