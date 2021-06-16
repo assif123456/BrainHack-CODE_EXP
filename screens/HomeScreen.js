@@ -6,18 +6,17 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Linking } from 'react-native';
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { createStackNavigator } from "@react-navigation/stack";
+import * as SMS from 'expo-sms';
+// import { SMS } from 'expo';
 
 export default function HomeScreen() {
   return (
-    
-    <Stack.Navigator  >
+    <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen0} />
       <Stack.Screen name="Archive" component={HomeSecondScreen} />
       <Stack.Screen name="Contact the Police" component={HomeThirdScreen} />
     </Stack.Navigator>
-
- 
-  );
+    );
 }
 
 function HomeScreen0({ navigation }) {
@@ -51,16 +50,13 @@ function HomeScreen0({ navigation }) {
           justifyContent: 'flex-start', 
           alignItems:'center', 
           marginLeft: 25, 
-          backgroundColor: "lightblue", 
-          borderRadius: 20, 
+          backgroundColor: "lightgrey", 
+          borderRadius: 10, 
           padding: 6,
           width: 70,
-          borderWidth: 3,
-          borderStyle: "solid",
-          borderColor: "grey",
           }}>
         <TouchableOpacity onPress={() => navigation.navigate("Archive")}>
-          <Text styles={{fontWeight: "bold", fontSize: 10}}>Submit</Text>
+          <Text style={{fontSize: 12}}>Submit</Text>
         </TouchableOpacity>
        </View>
         
@@ -90,9 +86,31 @@ function HomeSecondScreen() {
   );
 }
 
-function HomeThirdScreen() {
-  return <Text>SMS 71999 if it's not safe to call the police. When your message is successfully received by the police, an acknowledgement message will be sent back to you. https://www.police.gov.sg/SMS-71999</Text>;
+const EMERGENCY_CONTACTS_LIST = ['0123456789', '987543210'];
 
+async function sendMessage () {
+  const status = await SMS.sendSMSAsync(
+    EMERGENCY_CONTACTS_LIST, 'SOS Please help')}
+
+function HomeThirdScreen() {
+  return (
+  <View style={style.container2}>
+    <Text style={style.panicMessage}>SMS 71999 if it's not safe to call the police. When your message is successfully received by the police, an acknowledgement message will be sent back to you.</Text>
+    <Text></Text>
+
+    <TouchableOpacity style={style.panicButton} onPress={() => Linking.openURL('https://www.police.gov.sg/SMS-71999')}>
+      <Text>Send a message to 71999</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity style={style.panicButton} onPress={() => {sendMessage()}}>
+      <Text>Alert Emergency Contacts</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity style={style.panicButton}>
+      <Text>Alert Police</Text>
+    </TouchableOpacity>
+  </View>
+  )
 }
 
 const Stack = createStackNavigator();
@@ -103,6 +121,14 @@ const style = StyleSheet.create({
     flex: 1,
     // justifyContent: "center",
     // alignItems: "center",
+  },
+  container2:{
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+    backgroundColor: "lightgrey",
+    padding: 10, 
   },
   header: {
     fontSize: 40,
@@ -142,6 +168,14 @@ const style = StyleSheet.create({
     fontWeight: "bold",
   },
 
+  panicMessage:{
+    fontSize: 18,
+    fontWeight: "bold",
+    alignItems: "center",
+    justifyContent: "center",
+
+  },
+
   image:{
     width: 400, 
     height: 400,
@@ -170,5 +204,14 @@ const style = StyleSheet.create({
     justifyContent: "center",
     position: "relative", 
     margin: 10,
-  }
+  }, 
+  panicButton: {
+    justifyContent: 'center', 
+    alignItems:'center', 
+    backgroundColor: "tomato", 
+    borderRadius: 10, 
+    padding: 8,
+    margin: 10,
+    width: "100%",
+  },
 });
