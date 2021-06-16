@@ -4,6 +4,8 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
+import App from "./ChatBot";
+
 function ChatScreen({ navigation }) {
   useEffect(() => {
     navigation.setOptions({
