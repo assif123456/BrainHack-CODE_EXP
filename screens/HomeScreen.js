@@ -125,7 +125,7 @@ const style = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 30,
+    marginHorizontal: 10,
   },
 
   input:{
