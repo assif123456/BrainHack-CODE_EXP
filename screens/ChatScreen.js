@@ -87,7 +87,7 @@ function ChatScreen({ navigation }) {
   );
 }
 
-function NameScreen(navigation) {
+function NameScreen({ navigation }) {
   const [todoText, setTodoText] = useState("");
   return (
     <View
