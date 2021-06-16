@@ -101,8 +101,8 @@ const Stack = createStackNavigator();
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
   header: {
     fontSize: 40,

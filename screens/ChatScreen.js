@@ -1,14 +1,19 @@
 import * as React from "react";
-import  { useEffect } from "react" ;
+import { useEffect } from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+
+import App from "./ChatBot";
 
 function ChatScreen({ navigation }) {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity style={{color: "lightgrey", alignItems: "flex-end", padding: 20}} onPress={() => navigation.navigate("Contact the Police")}>
+        <TouchableOpacity
+          style={{ color: "lightgrey", alignItems: "flex-end", padding: 20 }}
+          onPress={() => navigation.navigate("Contact the Police")}
+        >
           <FontAwesome name="bullhorn" size={24} color="grey" />
         </TouchableOpacity>
       ),
@@ -45,10 +50,15 @@ function ChatScreen({ navigation }) {
         />
         <Text style={style.buttonText}>Post annoymously on a forum</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={style.button}>
+      <TouchableOpacity
+        style={style.button}
+        onPress={() => navigation.navigate("Bot")}
+      >
         <Image
           style={style.butonImage}
-          source={{ uri: "https://image.flaticon.com/icons/png/512/2602/2602681.png" }}
+          source={{
+            uri: "https://image.flaticon.com/icons/png/512/2602/2602681.png",
+          }}
         />
         <Text style={style.buttonText}>Chat with bot</Text>
       </TouchableOpacity>
@@ -105,6 +115,7 @@ export default function ChatStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Chat" component={ChatScreen} />
+      <Stack.Screen name="Bot" component={App} />
     </Stack.Navigator>
   );
 }
