@@ -105,17 +105,15 @@ function NameScreen({ navigation }) {
         onChangeText={(text) => setNameText(text)}
       />
       <Button
-        onPress={() =>
-          navigation.navigate("Messenger", { params: { name: NameText } })
-        }
+        onPress={() => navigation.navigate("Messenger", { name: NameText })}
         title="Submit"
       />
     </View>
   );
 }
 class Chat extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: (navigation.state.params || {}).name || "Chat!",
+  static navigationOptions = ({ navigation, route }) => ({
+    title: (route.params || {}).name || "Chat!",
   });
 
   state = {
@@ -124,7 +122,7 @@ class Chat extends React.Component {
 
   get user() {
     return {
-      name: this.props.navigation.state.params.name,
+      name: this.props.route.params.name,
       _id: Fire.shared.uid,
     };
   }
