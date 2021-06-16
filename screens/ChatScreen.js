@@ -1,10 +1,11 @@
 import * as React from "react";
-import { useEffect } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { useEffect, useState } from "react";
+import { Text, View, StyleSheet, TouchableOpacity, Image,Button } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import App from "./ChatBot";
+import { TextInput } from "react-native-gesture-handler";
 
 function ChatScreen({ navigation }) {
   useEffect(() => {
@@ -22,7 +23,7 @@ function ChatScreen({ navigation }) {
 
   return (
     <View style={style.container}>
-      <TouchableOpacity style={style.button}>
+      <TouchableOpacity style={style.button} onPress = {() => navigation.navigate("Enter your name!")}>
         <Image
           style={style.butonImage}
           source={{
@@ -75,6 +76,23 @@ function ChatScreen({ navigation }) {
   );
 }
 
+function NameScreen(navigation){
+  const [todoText, setTodoText] = useState("");
+  return (
+     <View style = {{ fontSize:30, alignItems: 'center', justifyContent: "center", flex: 1,}}>
+       <Text>Enter your name:</Text>
+       <TextInput
+        style={style.textInput}
+        onChangeText={(text) => setTodoText(text)}
+        />
+        <Button
+        // onPress={() => navigation.navigate("Notes")}
+        title="Submit"
+       />
+     </View>
+  );
+}
+
 const style = StyleSheet.create({
   container: {
     flex: 1,
@@ -107,6 +125,13 @@ const style = StyleSheet.create({
     // borderRadius: 25,
     margin: 10,
   },
+  textInput: {
+    borderColor: "black",
+    padding: 5,
+    backgroundColor: "white",
+    marginTop: 10,
+    width: "90%",
+  },
 });
 
 const Stack = createStackNavigator();
@@ -116,6 +141,7 @@ export default function ChatStack() {
     <Stack.Navigator>
       <Stack.Screen name="Chat" component={ChatScreen} />
       <Stack.Screen name="Bot" component={App} />
+      <Stack.Screen name="Enter your name!" component = {NameScreen} />
     </Stack.Navigator>
   );
 }
