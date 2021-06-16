@@ -2,7 +2,9 @@ import * as React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-function ChatScreen() {
+import App from "./ChatBot";
+
+function ChatScreen({ navigation }) {
   return (
     <View style={style.container}>
       <TouchableOpacity style={style.button}>
@@ -33,7 +35,10 @@ function ChatScreen() {
         />
         <Text style={style.buttonText}>Post annoymously on a forum</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={style.button}>
+      <TouchableOpacity
+        style={style.button}
+        onPress={() => navigation.navigate("Bot")}
+      >
         <Image
           style={style.butonImage}
           source={{ uri: "https://i.imgur.com/siVcRDk.png" }}
@@ -88,6 +93,7 @@ export default function ChatStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Chat" component={ChatScreen} />
+      <Stack.Screen name="Bot" component={App.render} />
     </Stack.Navigator>
   );
 }

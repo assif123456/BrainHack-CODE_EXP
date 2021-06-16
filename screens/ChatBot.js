@@ -1,3 +1,5 @@
+// credits: https://medium.com/@itsHabib/integrate-an-amazon-lex-chatbot-into-a-react-native-app-1536883ccbed
+
 import React, { Component } from "react";
 import { Text, View, StyleSheet, TextInput, FlatList } from "react-native";
 import AWS from "aws-sdk/dist/aws-sdk-react-native";
