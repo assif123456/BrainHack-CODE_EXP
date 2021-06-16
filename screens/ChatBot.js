@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   botMessages: {
     color: "black",
-    backgroundColor: "white",
+    backgroundColor: "#e391ff",
     padding: 10,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 20,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     width: "75%",
   },
   userMessages: {
-    backgroundColor: "#40AD4D",
+    backgroundColor: "#bf00ff",
     color: "white",
     padding: 10,
     marginBottom: 10,
