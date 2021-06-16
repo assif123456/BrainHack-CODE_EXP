@@ -14,7 +14,7 @@ export default function HomeScreen() {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen0} />
       <Stack.Screen name="Archive" component={HomeSecondScreen} />
-      <Stack.Screen name="Contact the Police" component={HomeThirdScreen} />
+      <Stack.Screen name="Alert Someone" component={HomeThirdScreen} />
     </Stack.Navigator>
     );
 }
@@ -24,7 +24,7 @@ function HomeScreen0({ navigation }) {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity style={{color: "lightgrey", alignItems: "flex-end", marginRight: 18}} onPress={() => navigation.navigate("Contact the Police")}>
+        <TouchableOpacity style={{color: "lightgrey", alignItems: "flex-end", marginRight: 18}} onPress={() => navigation.navigate("Alert Someone")}>
           <FontAwesome name="bullhorn" size={18} color="grey" />
         </TouchableOpacity>
       ),
@@ -95,19 +95,12 @@ async function sendMessage () {
 function HomeThirdScreen() {
   return (
   <View style={style.container2}>
-    <Text style={style.panicMessage}>SMS 71999 if it's not safe to call the police. When your message is successfully received by the police, an acknowledgement message will be sent back to you.</Text>
-    <Text></Text>
-
     <TouchableOpacity style={style.panicButton} onPress={() => Linking.openURL('https://www.police.gov.sg/SMS-71999')}>
-      <Text>Send a message to 71999</Text>
+      <Text style={style.alertText}>Alert Police</Text>
     </TouchableOpacity>
 
     <TouchableOpacity style={style.panicButton} onPress={() => {sendMessage()}}>
-      <Text>Alert Emergency Contacts</Text>
-    </TouchableOpacity>
-
-    <TouchableOpacity style={style.panicButton}>
-      <Text>Alert Police</Text>
+      <Text style={style.alertText}>Alert Emergency Contacts</Text>
     </TouchableOpacity>
   </View>
   )
@@ -168,14 +161,6 @@ const style = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  panicMessage:{
-    fontSize: 18,
-    fontWeight: "bold",
-    alignItems: "center",
-    justifyContent: "center",
-
-  },
-
   image:{
     width: 400, 
     height: 400,
@@ -214,4 +199,8 @@ const style = StyleSheet.create({
     margin: 10,
     width: "100%",
   },
+  alertText:{
+    fontSize: 18,
+    fontWeight: 'bold'
+  }
 });
