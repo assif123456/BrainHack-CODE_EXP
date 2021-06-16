@@ -89,7 +89,7 @@ function ChatScreen({ navigation }) {
 }
 
 function NameScreen({ navigation }) {
-  const [todoText, setTodoText] = useState("");
+  const [NameText, setNameText] = useState("");
   return (
     <View
       style={{
@@ -102,10 +102,12 @@ function NameScreen({ navigation }) {
       <Text>Enter your name:</Text>
       <TextInput
         style={style.textInput}
-        onChangeText={(text) => setTodoText(text)}
+        onChangeText={(text) => setNameText(text)}
       />
       <Button
-        onPress={() => navigation.navigate("Messenger", { name: todoText })}
+        onPress={() =>
+          navigation.navigate("Messenger", { params: { name: NameText } })
+        }
         title="Submit"
       />
     </View>
@@ -115,11 +117,37 @@ class Chat extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: (navigation.state.params || {}).name || "Chat!",
   });
+
   state = {
     messages: [],
   };
+
+  get user() {
+    return {
+      name: this.props.navigation.state.params.name,
+      _id: Fire.shared.uid,
+    };
+  }
+
   render() {
-    return <GiftedChat messages={this.state.messages} />;
+    return (
+      <GiftedChat
+        messages={this.state.messages}
+        onSend={Fire.shared.send}
+        user={this.user}
+      />
+    );
+  }
+
+  componentDidMount() {
+    Fire.shared.on((message) =>
+      this.setState((previousState) => ({
+        messages: GiftedChat.append(previousState.messages, message),
+      }))
+    );
+  }
+  componentWillUnmount() {
+    Fire.shared.off();
   }
 }
 
