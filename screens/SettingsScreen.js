@@ -14,20 +14,30 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Feather } from "@expo/vector-icons";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 function SettingsScreen({ navigation }) {
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity style={{color: "lightgrey", alignItems: "flex-end", padding: 20}} onPress={() => navigation.navigate("Contact the Police")}>
+          <FontAwesome name="bullhorn" size={24} color="grey" />
+        </TouchableOpacity>
+      ),
+    });
+  });
   return(
     <View>
       <View style={styles.ImageContainer}>
         <Image source={{uri:"https://image.flaticon.com/icons/png/512/1946/1946392.png"}} style={styles.profileicon}/>
-        <Text style={styles.username}>@username</Text>
+        <Text style={styles.username}>@lvincoly_</Text>
         <Text style={{color: 'blue', textDecorationLine: 'underline'}}
         onPress={() => Linking.openURL('http://google.com')}>Edit 
         </Text>
       </View>
 
       <TouchableOpacity style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>Profile{'                                                          '}
+        <Text style={styles.buttonText}>Profile{'                                                        '}
           <TouchableOpacity style={styles.IconButtonContainer}>
             <Feather name="edit-3" size={20} color="grey" />
           </TouchableOpacity>

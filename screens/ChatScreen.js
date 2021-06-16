@@ -1,8 +1,20 @@
 import * as React from "react";
+import  { useEffect } from "react" ;
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-function ChatScreen() {
+function ChatScreen({ navigation }) {
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity style={{color: "lightgrey", alignItems: "flex-end", padding: 20}} onPress={() => navigation.navigate("Contact the Police")}>
+          <FontAwesome name="bullhorn" size={24} color="grey" />
+        </TouchableOpacity>
+      ),
+    });
+  });
+
   return (
     <View style={style.container}>
       <TouchableOpacity style={style.button}>
