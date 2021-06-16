@@ -12,7 +12,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import App from "./ChatBot";
 import { TextInput } from "react-native-gesture-handler";
-// import { GiftedChat } from 'react-native-gifted-chat';
+import { GiftedChat } from 'react-native-gifted-chat';
 
 function ChatScreen({ navigation }) {
   useEffect(() => {
