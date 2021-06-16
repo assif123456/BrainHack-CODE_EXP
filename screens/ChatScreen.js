@@ -11,8 +11,9 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import App from "./ChatBot";
+import Fire from "../database/Fire";
 import { TextInput } from "react-native-gesture-handler";
-import { GiftedChat } from 'react-native-gifted-chat';
+import { GiftedChat } from "react-native-gifted-chat";
 
 function ChatScreen({ navigation }) {
   useEffect(() => {
@@ -87,7 +88,7 @@ function ChatScreen({ navigation }) {
   );
 }
 
-function NameScreen({navigation}) {
+function NameScreen({ navigation }) {
   const [todoText, setTodoText] = useState("");
   return (
     <View
@@ -104,7 +105,7 @@ function NameScreen({navigation}) {
         onChangeText={(text) => setTodoText(text)}
       />
       <Button
-        onPress={() => navigation.navigate("Messenger")}
+        onPress={() => navigation.navigate("Messenger", { name: todoText })}
         title="Submit"
       />
     </View>
@@ -112,17 +113,13 @@ function NameScreen({navigation}) {
 }
 class Chat extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-   title: (navigation.state.params || {}).name || 'Chat!',
+    title: (navigation.state.params || {}).name || "Chat!",
   });
   state = {
     messages: [],
   };
   render() {
-    return (
-      <GiftedChat
-        messages={this.state.messages}
-      />
-    );
+    return <GiftedChat messages={this.state.messages} />;
   }
 }
 
