@@ -37,26 +37,26 @@ function SettingsScreen({ navigation }) {
       </View>
 
       <TouchableOpacity style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>Profile{'                                                         '}
-          <TouchableOpacity style={styles.IconButtonContainer}>
+        <Text style={styles.buttonText}>Profile
+          <View style={styles.IconButtonContainer}>
             <Feather name="edit-3" size={20} color="grey" />
-          </TouchableOpacity>
+          </View>
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("EmergencyContacts")}>
-        <Text style={styles.buttonText}>Emergency Contacts{'                                '}
-          <TouchableOpacity style={styles.IconButtonContainer}>
+        <Text style={styles.buttonText}>Emergency Contacts
+          <View style={styles.IconButtonContainer}>
             <Feather name="edit-3" size={20} color="grey" />
-          </TouchableOpacity>
+          </View>
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("Preferences")}>
-        <Text style={styles.buttonText}>Preferences{'                                               '}
-          <TouchableOpacity style={styles.IconButtonContainer}>
+        <Text style={styles.buttonText}>Preferences
+          <View style={styles.IconButtonContainer}>
             <Feather name="edit-3" size={20} color="grey" />
-          </TouchableOpacity>
+          </View>
         </Text>
       </TouchableOpacity>
 
@@ -132,7 +132,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "center",
     backgroundColor: "lightgrey",
   },
@@ -156,9 +156,8 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    alignItems: "flex-start",
-    alignContent: "center",
-    justifyContent: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: "white",
     height: 70,
     margin: 8,
@@ -167,12 +166,14 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderRadius: 50,
     borderColor: "#bf00ff",
+    display: 'flex',
     // borderColor: "lightgrey",
   },
 
   buttonText: {
     marginLeft: 20,
     fontSize: 18, 
+    justifyContent: "space-around",
   },
 
   profileicon: {
@@ -195,9 +196,6 @@ const styles = StyleSheet.create({
   }, 
 
   IconButtonContainer: {
-    alignContent: "flex-end", 
-    justifyContent: "center", 
-    alignItems: "flex-end",
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
   }
 });
